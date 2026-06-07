@@ -9,11 +9,9 @@ if(!token){
 async function cargarUsuario(){
 
     const response = await fetch('/api/user', {
-
         headers: {
             Authorization: 'Bearer ' + token
         }
-
     });
 
     if(!response.ok){
@@ -73,11 +71,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     })
     .then(r => r.json())
     .then(data => {
-        if(data.length > 0){
-            const projecte = data[0];
+        if (data && data.nom) {
             ultimProjecte.innerHTML = `
-                <h2>${projecte.nom}</h2>
-                <p>${projecte.descripcio}</p>
+                <h2>${data.nom}</h2>
+                <p>${data.descripcio}</p>
             `;
         } else {
             ultimProjecte.innerHTML = '<p>No hay proyectos aún.</p>';

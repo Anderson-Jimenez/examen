@@ -17,8 +17,13 @@ class ProjectsController extends Controller
     }
     public function latestProjects()
     {
-        $projects = Project::latest()->get();
-        return response()->json($projects);
+        // Último proyecto del usuario autenticado (por created_at)
+        $project = auth()->user()->projects()->latest()->first();
+
+        // Si quieres el último modificado (por updated_at):
+        // $project = auth()->user()->projects()->orderBy('updated_at', 'desc')->first();
+
+        return response()->json($project); // devuelve objeto o null
     }
     /**
      * Store a newly created resource in storage.
