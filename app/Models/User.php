@@ -38,4 +38,19 @@ class User extends Authenticatable
     {
         return $this->hasMany(Project::class);
     }
+    /*
+    public function missatges()
+    {
+        return $this->hasMany(Mensaje::class);
+    }
+    */
+    public function missatgesEnviats()
+    {
+        return $this->hasMany(Mensaje::class, 'remitente_id');
+    }
+    public function missatgesRebuts()
+    {
+        return $this->hasMany(Mensaje::class, 'destinatario_id');
+    }
+    
 }

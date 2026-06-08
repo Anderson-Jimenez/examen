@@ -35,54 +35,70 @@ footer{
     padding: 1rem;
 }
 main {
-    display:grid;
-    grid-template-columns: 1fr 2fr 1fr;
-    gap: 1rem;
-    padding: 1rem;
-}
-aside,article,section {
-    background: white;
-    padding: 1rem;
-    border-radius: 5px;
+    padding: 2rem;
 }
 
+.flex {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.benvinguda{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+table, th, td {
+    border: 1px solid #ddd;
+}
+th, td {
+    padding: 0.75rem;
+    text-align: left;
+}
 </style>
 </head>
 
 <body>
 
 <header>
-    <p id="saludo"></p>
-    <h1>Dashboard</h1>
-    <button id="logout">
-        Cerrar sesión
-    </button>
+    <h1>Gestio de missatges</h1>
+    <div class="flex">
+        <p id="nomUsuari"></p>
+        <button id="logout">
+            Sortir
+        </button>
+    </div>
+
 </header>
 
 <main class="layout">
+    <div class="benvinguda">
+        <div>
+            <h2 id="saludo"></h2>
+            <h3>Aquesta es la seva safata de missatges</h3>
+        </div>
+        <button onclick="window.location.href='/missatges/create'">Enviar mensaje</button>
+    </div>
 
-  <aside class="sidebar">
-    <h2>Llistat del meus projectes</h2>
-    <ul id="projects-list">
-    </ul>
-    <button onclick="window.location.href='/projects/create'">Afegir projecte</button>
-
-  </aside>
-
-  <article class="featured">
-    
-  </article>
-
-  <section class="news">
-    <button>Afegir Tasca</button>
-  </section>
-
+    <section class="missatges">
+        <div class="flex">
+            <button id="missatgeEntrada">Missatges d'entrada</button> 
+            <button id="missatgeSortida">Missatges de sortida</button>
+        </div>
+        <table id="missatgesTable">
+        </table>
+    </section>
 </main>
 
 <footer>
-  <p>Examen DAW - Layout Responsive sense media queries</p>
+  <p>Examen DAW</p>
 </footer>
 
-<script src="/js/dashboard.js"></script>
+<script src="/js/missatges.js"></script>
 </body>
 </html>

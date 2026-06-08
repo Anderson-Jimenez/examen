@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\MissatgeController;
 
 Route::get('/login', function () {
     return view('login');
@@ -10,10 +12,13 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Route::get('/projects/create', function () {
-    return view('projectes.create');
-})->name('projects.create');
+Route::get('/missatges/create', function () {
+    return view('missatges.create');
+})->name('missatges.create');
 
-Route::get('/projectes/{id}', function ($id) {
-    return view('projectes.edit', ['projectId' => $id]);
+Route::get('/missatge/{id}', function ($id) {
+    return view('missatges.show', ['mensajeId' => $id]);
 })->name('projects.edit');
+
+Route::get('/api/missatges/entrada', [MissatgeController::class, 'missatgesEntrada']);
+Route::get('/api/missatges/sortida', [MissatgeController::class, 'missatgesSortida']);

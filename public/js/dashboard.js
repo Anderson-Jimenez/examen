@@ -25,7 +25,9 @@ async function cargarUsuario(){
     console.log(user);
 
     document.getElementById('saludo').innerText =
-        'Bienvenido ' + user.name;
+        'Bienvenido, ' + user.name + "!";
+
+    document.getElementById('nomUsuari').textContent = user.name;
 }
 
 cargarUsuario();
